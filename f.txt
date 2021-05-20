@@ -1,0 +1,34 @@
+{
+  "mysqlOptions": {
+    "authProtocol": "default"
+  },
+  "previewLimit": 50,
+  "server": "localhost",
+  "port": 3306,
+  "driver": "MySQL",
+  "name": "mysql1",
+  "group": "mysql1",
+  "username": "jinhanchen",
+  "password": "delux7512",
+  "database": "3333"
+}
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 10;
+        }
+        ul li {
+              border: 1px solid #ddd;
+              margin-top: -1px; /* Prevent double borders */
+              background-color: #f6f6f6;
+              padding: 12px;
+              text-decoration: none;
+              font-size: 18px;
+              color: black;
+              display: block;
+              position: relative;
+        }
+        ul li:hover {
+            background-color: #eee;
+        }

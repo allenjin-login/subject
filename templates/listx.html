@@ -1,0 +1,149 @@
+<html>
+    <head>
+        <title>list</title>
+        <meta charset="utf-8">
+        <link  rel="stylesheet" href="/static/v.css">
+    </head>
+    <body>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 10;
+        }
+        ul li {
+              border: 1px solid #ddd;
+              margin-top: -1px; /* Prevent double borders */
+              background-color: #f6f6f6;
+              padding: 12px;
+              text-decoration: none;
+              font-size: 18px;
+              color: black;
+              display: block;
+              position: relative;
+        }
+        ul li:hover {
+            background-color: #eee;
+        }
+    </style>
+        <div>
+            <div>
+                <input type="submit" value="add" id="addi">
+                <input type="text" name="addsthing" id="text">
+         
+            </div>
+        </div>
+        <div>
+            <ul id="p">
+            </ul>
+            <script>
+                let xhr = new XMLHttpRequest()
+                let list = new Array("red","yellow","green");
+                let i = list.length
+                var rnumber = 0
+                var aaa = "False"
+                var daxx= "<button onClick=nsend(this.id)>remove</button>"
+                let as = {
+                  add:0,
+                  van:-1,
+                  addse(a){
+                     this.add = a
+                  },
+                  out(){
+                      return this.add
+                  },
+                  dx(){
+                      $(".good").append(daxx)
+                      $("button").addClass('g')
+                  },
+                  number(){
+                      this.van = this.van + 1
+                      return this.van
+                  }
+                };
+
+
+                function removel(number){
+                    let el = document.getElementsByTagName('li')
+
+                }
+
+                function remove(){
+                    var element,liElements = document.getElementsByTagName('li');
+                    while (liElements.length > 0){
+                        element = liElements[0]
+                        console.log(element)
+                        console.log(liElements)
+
+                        element.parentElement.removeChild(element);
+                    }
+                }
+                
+
+                function send(t){
+                    console.log(t);
+                    xhr.open("post","views.py",false);
+                    xhr.send(t);
+
+                }
+                
+                xhr.onreadystatechange = function(){
+
+                    if(xhr.readyState == 4){
+                        if((xhr.status >= 200 && xhr.status < 300) || xhr.status ==304){
+                            if(xhr.responseText == "ok"){
+                                console.log(aaa)
+                                aaa = "ture"
+                            }
+                            remove()
+                            removel()
+                            j = JSON.parse(xhr.responseText);
+                            console.log(j)
+                            for(let o=0;o < j.length;o++){
+                                let ru = document.getElementById("p")
+                                console.log("loading"+":"+ru)
+                                console.log("loading"+":"+j[o])
+                                let l = document.createElement("li");
+                                let node = document.createTextNode(j[o]);
+                                l.appendChild(node);
+                                ru.appendChild(l)
+                                $("li").addClass("good")
+                            }
+                        }else{
+                            alert("E:" + xhr.status);
+                        }
+                        as.dx()
+                        console.log(document.getElementsByClassName("g"))
+                        xt = document.getElementsByClassName("g")
+                        for (let o = 0;o < xt.length; o++){
+                            aww =  xt[o]
+                            aww.id = o
+                        }
+                    }
+                };
+                function fs() {
+                    xhr.open("post","view.py",false)
+                    console.log(as.add)
+                    xhr.send(as.add)
+
+                }
+
+                function nsend(x){
+                    xhr.open("post","views.py",false)
+                    xhr.send("remove:")
+                    as.addse(x)
+                    console.log(as.out())
+                    fs()
+                }
+                send(null);
+                 $("#addi").click(function(){
+                        send($("#text").val());
+                    })
+
+
+            </script>
+        </div>
+    </body>
+</html>
